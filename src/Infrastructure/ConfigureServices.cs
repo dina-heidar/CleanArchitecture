@@ -24,7 +24,7 @@ public static class ConfigureServices
         }
         else
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
